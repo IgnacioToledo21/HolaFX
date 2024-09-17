@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -29,6 +30,7 @@ public class HolaFX extends Application {
         boton.setPrefSize(100,20);//Tamaño del boton
         boton.setLayoutX(100); //Coordenadas del boton
         boton.setLayoutY(100); //Coordenadas del boton
+        boton.setTooltip(new Tooltip("No pulses el boton")); //Enseña un mensaje cuando señalas el boton
 
         //CREACION DE UN EVENTO EN EL BOTON
 
@@ -38,6 +40,15 @@ public class HolaFX extends Application {
                 System.out.println("Me has visto"); //Al pulsar, se muestra en la consola el mensaje
             }
         });
+        //FORMA MAS EFICIENTE DE MOSTRAR UN EVENTO EN EL BOTON
+        boton.setOnAction(actionEvent -> System.out.println("Me has visto"));
+
+        //MOSTRAR UN EVENTO USASNDO VARIAS INSTRUCCIONES
+        boton.setOnAction(actionEvent -> {
+            System.out.println("Me has visto");
+            saludoLabel.setText("Hola mmwebo");
+        });
+
 
         root.getChildren().add(boton);//Agregamos a la escena el boton
 
